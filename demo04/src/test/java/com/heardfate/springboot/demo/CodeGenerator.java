@@ -32,7 +32,7 @@ public class CodeGenerator {
      * 模块名称
      */
     private static final String MODULE_NAME = "demo04";
-    private static final String NAME = "";
+    private static final String NAME = "/demo04";
     /**
      * 输出文件的路径
      */
