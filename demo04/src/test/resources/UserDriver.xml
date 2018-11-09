@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <user id="1" name="userOne" age="18" email="user-one@heardfate.com"/>
+    <user id="2" name="userTwo" age="20" email="userTwo@heardfate.com"/>
+    <user id="1060052237347897346" age="55" email="moreuser@heardfate.com"/>
+</dataset>

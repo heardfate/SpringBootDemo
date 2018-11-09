@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status=debug 可以查看log4j的装配过程 -->
+<configuration status="off" monitorInterval="1800">
+	<properties>
+		<property name="LOG_HOME">/Volumes/MacDisk/logs/springbootdemo</property>
+		<property name="BACKUP_HOME">${LOG_HOME}/backup</property>
+		<property name="SERVER_NAME">demo04</property>
+	</properties>
+	<appenders>
+		<!-- 定义控制台输出 -->
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout
+				pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-7level [%thread][%class{36}:%line] - %msg%n" />
+		</Console><!-- 程序员调试日志 -->
+		<RollingRandomAccessFile name="DevLog"
+			fileName="${LOG_HOME}/dev/${SERVER_NAME}.log" filePattern="${BACKUP_HOME}/${SERVER_NAME}.%d{yyyy-MM-dd}.log">
+			<PatternLayout
+				pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-7level [%thread][%class{36}:%line] - %msg%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingRandomAccessFile>
+	</appenders>
+	<Loggers>
+		<!-- 3rdparty Loggers -->
+		<Root level="INFO">
+			<AppenderRef ref="Console" />
+		</Root>
+		<!--只有com.heardfate.springboot.demo输出DEBUG日志-->
+		<Logger name="com.heardfate.springboot.demo" level="DEBUG">
+			<AppenderRef ref="DevLog" />
+		</Logger>
+	</Loggers>
+</configuration>
